@@ -66,7 +66,8 @@ THREE.CurvePath.prototype = Object.assign( Object.create( THREE.Curve.prototype 
 				var diff = curveLengths[ i ] - d;
 				var curve = this.curves[ i ];
 
-				var u = 1 - diff / curve.getLength();
+				var segmentLength = curve.getLength();
+				var u = segmentLength === 0 ? 0 : 1 - diff / segmentLength;
 
 				return curve.getPointAt( u );
 
