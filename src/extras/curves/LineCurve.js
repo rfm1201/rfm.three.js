@@ -14,8 +14,12 @@ THREE.LineCurve.prototype.constructor = THREE.LineCurve;
 
 THREE.LineCurve.prototype.getPoint = function ( t ) {
 
-	var point = this.v2.clone().sub( this.v1 );
-	point.multiplyScalar( t ).add( this.v1 );
+	var point = this.v2.clone();
+	if (t !== 1) {
+
+		point.sub(this.v1).multiplyScalar(t).add(this.v1);
+
+	}
 
 	return point;
 
